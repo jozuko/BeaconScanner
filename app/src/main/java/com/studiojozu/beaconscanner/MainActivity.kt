@@ -1,6 +1,7 @@
 package com.studiojozu.beaconscanner
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -78,6 +79,13 @@ class MainActivity : AppCompatActivity() {
         }
         buttonStopService.setOnClickListener {
             beaconManager.onStop()
+        }
+
+        viewStartDonate.setOnClickListener {
+            beaconManager.onStop()
+
+            val intent = Intent(this, DonateActivity::class.java)
+            startActivity(intent)
         }
     }
 }

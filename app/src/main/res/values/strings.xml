@@ -3,4 +3,13 @@
 
     <string name="button_start_service">iBeacon受信開始</string>
     <string name="button_stop_service">iBeacon受信停止</string>
+
+    <string name="donate_title">寄付</string>
+    <string name="donate_message">寄付いただけると、\n開発者のやる気が上がります。</string>
+    <string name="button_donate_100">100円を寄付（やる気が上がります）</string>
+    <string name="button_donate_500">500円を寄付（やる気がだいぶ上がります）</string>
+    <string name="button_donate_1000">1,000円を寄付（やる気がものすごく上がります）</string>
+    <string name="cannot_start_billing_service">寄付のセットアップに失敗しました。寄付を中断します。</string>
+    <string name="failed_purchase_update">寄付できませんでした。</string>
+    <string name="success_donate_message">ありがとうございます!!\nやる気でました</string>
 </resources>

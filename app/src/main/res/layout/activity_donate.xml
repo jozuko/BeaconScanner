@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/viewTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/donate_title"
+        android:textColor="@android:color/black"
+        android:textSize="32sp" />
+
+    <TextView
+        android:id="@+id/viewMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/viewTitle"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="@string/donate_message"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/viewDonate100"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/viewDonate500"
+        android:enabled="false"
+        android:text="@string/button_donate_100"
+        android:textAllCaps="false" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/viewDonate500"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/viewDonate1000"
+        android:enabled="false"
+        android:text="@string/button_donate_500"
+        android:textAllCaps="false" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/viewDonate1000"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:enabled="false"
+        android:text="@string/button_donate_1000"
+        android:textAllCaps="false" />
+
+    <ProgressBar
+        android:id="@+id/viewLoading"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+</RelativeLayout>
