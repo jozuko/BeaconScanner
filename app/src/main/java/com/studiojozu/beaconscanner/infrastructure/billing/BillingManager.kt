@@ -28,7 +28,7 @@ class BillingManager(
 
     private val purchaseUpdateListener =
         PurchasesUpdatedListener { billingResult, purchases ->
-            Log.d("BillingManager", "[onPurchaseUpdate] $billingResult, $purchases")
+            Log.d("BillingManager", "[onPurchaseUpdate] ${billingResult.responseCode}, $purchases")
             billingListener.onUpdatePurchase(billingResult, purchases)
         }
 
@@ -47,7 +47,7 @@ class BillingManager(
         billingClient.startConnection(object : BillingClientStateListener {
             override fun onBillingSetupFinished(billingResult: BillingResult?) {
                 // The BillingClient is ready. You can query purchases here.
-                Log.d("BillingManager", "[onBillingSetupFinished] $billingResult billingClient.isReady=${billingClient.isReady}")
+                Log.d("BillingManager", "[onBillingSetupFinished] ${billingResult?.responseCode} billingClient.isReady=${billingClient.isReady}")
                 billingListener.onFinishSetUp(billingResult)
             }
 
@@ -68,7 +68,7 @@ class BillingManager(
 
     fun getSkuDetail(listener: (billingResult: BillingResult?, skuDetailList: List<SkuDetails>) -> Unit) {
         val skuType = BillingClient.SkuType.INAPP
-        val inAppSkuList = listOf("donate")
+        val inAppSkuList = listOf(SKU_DONATE_100, SKU_DONATE_500, SKU_DONATE_1000)
         val skuDetailsParams = SkuDetailsParams.newBuilder()
             .setType(skuType)
             .setSkusList(inAppSkuList)
@@ -77,7 +77,7 @@ class BillingManager(
         if (billingClient.isReady) {
             Log.d("BillingManager", "[getSkuDetail] call querySkuDetailsAsync")
             billingClient.querySkuDetailsAsync(skuDetailsParams) { billingResult, skuDetailList ->
-                Log.d("BillingManager", "[getSkuDetail] billingResult=$billingResult")
+                Log.d("BillingManager", "[getSkuDetail] billingResult=${billingResult.responseCode}")
                 Log.d("BillingManager", "[getSkuDetail] skuDetailList=$skuDetailList")
                 listener.invoke(billingResult, skuDetailList)
             }
@@ -120,7 +120,7 @@ class BillingManager(
 
             Log.d("BillingManager", "[getPurchaseHistory] call queryPurchaseHistoryAsync")
             billingClient.queryPurchaseHistoryAsync(skuType) { billingResult, purchaseHistoryRecordList ->
-                Log.d("BillingManager", "[getPurchaseHistory] billingResult=$billingResult")
+                Log.d("BillingManager", "[getPurchaseHistory] billingResult=${billingResult.responseCode}")
                 Log.d("BillingManager", "[getPurchaseHistory] purchaseHistoryRecordList=$purchaseHistoryRecordList")
             }
         } else {
@@ -137,7 +137,7 @@ class BillingManager(
 
             Log.d("BillingManager", "[consume] call consumeAsync")
             billingClient.consumeAsync(consumeParams) { billingResult, purchaseTokenResult ->
-                Log.d("BillingManager", "[consume] billingResult=$billingResult, purchaseToken=$purchaseTokenResult")
+                Log.d("BillingManager", "[consume] billingResult=${billingResult.responseCode}, purchaseToken=$purchaseTokenResult")
                 listener.invoke(billingResult, purchaseToken)
             }
         } else {

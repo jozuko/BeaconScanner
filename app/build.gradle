@@ -14,8 +14,8 @@ android {
         applicationId "com.studiojozu.beaconscanner"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 6
-        versionName "0.6"
+        versionCode 8
+        versionName "0.8"
     }
 
     // Configure only for each module that uses Java 8
